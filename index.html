@@ -275,11 +275,27 @@
     .form-submit:hover { opacity: 0.4; }
 
     .form-success {
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .form-success-title {
+      display: block;
       font-family: var(--ff);
       font-size: var(--size);
       font-weight: 300;
       color: var(--ink);
-      line-height: 1.6;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-success-sub {
+      display: block;
+      font-family: var(--ff);
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: var(--ink);
+      letter-spacing: 0.08em;
     }
 
     /* ── Mobile ───────────────────────────────────── */
@@ -357,7 +373,10 @@
         </div>
         <button class="form-submit" type="submit">Enviar</button>
       </form>
-      <p class="form-success" id="formSuccess" style="display:none">Mensagem enviada. Em breve entro em contato.</p>
+      <p class="form-success" id="formSuccess" style="display:none">
+        <span class="form-success-title">Obrigado.</span><br>
+        <span class="form-success-sub">Logo entrarei em contato.</span>
+      </p>
     </div>
 
     <!-- Direita: frase a definir -->
