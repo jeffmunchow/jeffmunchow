@@ -229,7 +229,7 @@
     .form-input,
     .form-textarea {
       width: 100%;
-      background: none;
+      background: transparent;
       border: none;
       border-bottom: 1px solid var(--muted);
       font-family: var(--ff);
@@ -239,11 +239,18 @@
       color: var(--ink);
       padding: 0.3rem 0 0.5rem;
       outline: none;
+      box-shadow: none;
+      -webkit-appearance: none;
       transition: border-color 0.2s ease;
     }
 
     .form-input:focus,
-    .form-textarea:focus { border-bottom-color: var(--ink); }
+    .form-textarea:focus {
+      border-bottom-color: var(--ink);
+      background: transparent;
+      box-shadow: none;
+      outline: none;
+    }
 
     .form-textarea {
       resize: none;
@@ -376,6 +383,7 @@
     function showForm() {
       colProjects.style.display = 'none';
       colForm.style.display = 'block';
+      contactBtn.style.display = 'none';
     }
 
     function showContent() {
@@ -384,6 +392,7 @@
       contactForm.reset();
       contactForm.style.display = 'block';
       formSuccess.style.display = 'none';
+      contactBtn.style.display = 'block';
     }
 
     contactBtn.addEventListener('click', showForm);
