@@ -198,13 +198,20 @@
     }
 
     .col-form-body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 16rem;
+      position: relative;
+      min-height: 20rem;
     }
 
     .col-form-body form {
+      width: 100%;
+    }
+
+    .form-success {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
       width: 100%;
     }
 
@@ -317,10 +324,6 @@
 
     .form-submit:hover { opacity: 0.4; }
 
-    .form-success {
-      text-align: center;
-    }
-
     .form-success-title {
       display: block;
       font-family: var(--ff);
@@ -328,7 +331,7 @@
       font-weight: 300;
       color: var(--ink);
       letter-spacing: 0.02em;
-      margin-bottom: 0.05rem;
+      margin-bottom: 0;
     }
 
     .form-success-sub {
@@ -418,7 +421,7 @@
           </div>
           <div class="form-field">
             <div class="form-label-row">
-              <label class="form-label" for="telefone">Telefone / Whatsapp</label>
+              <label class="form-label" for="telefone">Whatsapp</label>
               <span class="form-error" id="erro-telefone">– Preenchimento obrigatório</span>
             </div>
             <input class="form-input" type="tel" id="telefone" name="telefone" />
