@@ -262,17 +262,15 @@
 
     /* ── Mobile ─────────────────────────────────── */
     @media (max-width: 680px) {
-      .page {
-        flex-direction: column;
-        align-items: flex-start;
-        height: auto;
-        padding: 2.5rem 2rem;
-        gap: 2.5rem;
-      }
-
       .col-name {
-        position: static;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
         transform: none;
+        background: var(--bg);
+        padding: 2rem 2rem 1rem;
+        z-index: 10;
       }
 
       .col-phrase {
@@ -280,12 +278,17 @@
         transform: none;
       }
 
+      .page {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 5.5rem 2rem 2.5rem;
+        gap: 2.5rem;
+      }
+
       .col-projects, .col-form { width: 100%; }
 
-      .col-form {
-        width: 100%;
-        height: auto;
-      }
+      .col-form { height: auto; }
 
       .col-form-body {
         display: block;
