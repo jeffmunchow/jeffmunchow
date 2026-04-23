@@ -266,16 +266,21 @@
         flex-direction: column;
         align-items: flex-start;
         height: auto;
-        padding: 2.5rem 2rem;
+        padding: 6rem 2rem 2.5rem;
         gap: 2.5rem;
       }
 
-      .col-name, .col-phrase {
-        position: static;
+      .col-name {
+        position: fixed;
+        top: 2.5rem;
+        left: 2rem;
         transform: none;
       }
 
-      .col-phrase { text-align: left; }
+      .col-phrase {
+        position: static;
+        transform: none;
+      }
 
       .col-projects, .col-form { width: 100%; }
 
