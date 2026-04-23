@@ -197,6 +197,13 @@
       text-align: left;
     }
 
+    .col-form-body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 16rem;
+    }
+
     .form-back {
       background: none;
       border: none;
@@ -279,7 +286,6 @@
 
     .form-success {
       text-align: center;
-      padding: 2rem 0;
     }
 
     .form-success-title {
@@ -361,25 +367,27 @@
     <!-- ⚠️ Crie uma conta gratuita em formspree.io e substitua YOUR_FORM_ID pelo ID do seu formulário -->
     <div class="col-form" id="colForm">
       <button class="form-back" id="formBack">← voltar</button>
-      <form id="contactForm">
-        <div class="form-field">
-          <label class="form-label" for="nome">Nome</label>
-          <input class="form-input" type="text" id="nome" name="nome" required />
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="email">Email</label>
-          <input class="form-input" type="email" id="email" name="email" required />
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="mensagem">Mensagem</label>
-          <textarea class="form-textarea" id="mensagem" name="mensagem" required></textarea>
-        </div>
-        <button class="form-submit" type="submit">Enviar</button>
-      </form>
-      <p class="form-success" id="formSuccess" style="display:none">
-        <span class="form-success-title">Obrigado.</span><br>
-        <span class="form-success-sub">Logo entrarei em contato.</span>
-      </p>
+      <div class="col-form-body">
+        <form id="contactForm">
+          <div class="form-field">
+            <label class="form-label" for="nome">Nome</label>
+            <input class="form-input" type="text" id="nome" name="nome" required />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-input" type="email" id="email" name="email" required />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="mensagem">Mensagem</label>
+            <textarea class="form-textarea" id="mensagem" name="mensagem" required></textarea>
+          </div>
+          <button class="form-submit" type="submit">Enviar</button>
+        </form>
+        <p class="form-success" id="formSuccess" style="display:none">
+          <span class="form-success-title">Obrigado.</span><br>
+          <span class="form-success-sub">Logo entrarei em contato.</span>
+        </p>
+      </div>
     </div>
 
     <!-- Direita: frase a definir -->
