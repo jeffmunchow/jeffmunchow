@@ -244,14 +244,7 @@
 
     .form-submit:hover { opacity: 0.4; }
 
-    .form-success {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      width: 100%;
-    }
+    .form-success { text-align: center; }
 
     .form-success-title {
       display: block;
@@ -423,6 +416,10 @@
         if (res.ok) {
           contactForm.style.display = 'none';
           formSuccess.style.display = 'block';
+          formSuccess.style.position = 'static';
+          formSuccess.style.transform = 'none';
+          formSuccess.style.marginTop = '4rem';
+          formSuccess.style.textAlign = 'center';
         } else {
           alert('Erro ao enviar. Tente novamente.');
         }
