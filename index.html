@@ -146,6 +146,11 @@
       display: none;
       width: 34rem;
       height: 26rem;
+      flex-direction: column;
+    }
+
+    .col-form.active {
+      display: flex;
     }
 
     .form-back {
@@ -165,11 +170,17 @@
     .form-back:hover { opacity: 0.5; }
 
     .col-form-body {
-      position: relative;
-      min-height: 20rem;
+      flex: 1;
+      display: flex;
+      align-items: center;
     }
 
     .col-form-body form { width: 100%; }
+
+    .form-success {
+      width: 100%;
+      text-align: center;
+    }
 
     .form-field { margin-bottom: 1.5rem; }
 
@@ -244,8 +255,6 @@
 
     .form-submit:hover { opacity: 0.4; }
 
-    .form-success { text-align: center; }
-
     .form-success-title {
       display: block;
       font-size: var(--md);
@@ -289,11 +298,12 @@
       .col-projects, .col-form { width: 100%; }
 
       .col-form { height: auto; }
+      .col-form.active { display: flex; }
 
       .col-form-body {
         display: block;
-        height: auto;
-        min-height: unset;
+        flex: unset;
+        align-items: unset;
       }
 
       .col-form-body form { width: 100%; }
@@ -397,14 +407,12 @@
 
     document.getElementById('contactBtn').addEventListener('click', () => {
       colProjects.style.display = 'none';
-      colForm.style.display = 'block';
-      colForm.classList.add('is-visible');
+      colForm.classList.add('active');
       contactBtn.style.display = 'none';
     });
 
     document.getElementById('formBack').addEventListener('click', () => {
-      colForm.style.display = 'none';
-      colForm.classList.remove('is-visible');
+      colForm.classList.remove('active');
       colProjects.style.display = 'block';
       contactBtn.style.display = 'block';
       contactForm.reset();
