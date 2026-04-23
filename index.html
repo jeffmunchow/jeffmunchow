@@ -279,8 +279,21 @@
 
       .col-projects, .col-form { width: 100%; }
 
-      .col-form { height: auto; }
-      .col-form-body { height: 24rem; min-height: unset; }
+      .col-form {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .col-form-body {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        height: unset;
+        min-height: unset;
+      }
+
+      .col-form-body form { width: 100%; }
 
       .contact-btn-wrap {
         position: static;
@@ -416,10 +429,6 @@
         if (res.ok) {
           contactForm.style.display = 'none';
           formSuccess.style.display = 'block';
-          formSuccess.style.position = 'static';
-          formSuccess.style.transform = 'none';
-          formSuccess.style.marginTop = '4rem';
-          formSuccess.style.textAlign = 'center';
         } else {
           alert('Erro ao enviar. Tente novamente.');
         }
