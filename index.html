@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeff Münchow</title>
+  <meta name="description" content="Fotógrafo, curador de viagens e leitor." />
+  <meta property="og:title" content="Jeff Münchow" />
+  <meta property="og:description" content="Fotógrafo, curador de viagens e leitor." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jeffmunchow.com" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:   #faf8f3;
+      --ink:  #1c1a16;
+      --muted:#9a9282;
+      --ff:   'Jost', 'Helvetica Neue', sans-serif;
+      --size: 0.875rem;
+      --pad:  3.5rem;
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--ff);
+      font-size: var(--size);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* ── Layout ───────────────────────────────────── */
+    .page {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 0;
+    }
+
+    .col-name {
+      position: fixed;
+      left: 7rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .col-projects {
+      position: relative;
+      margin: 0 auto;
+      width: 34rem;
+      text-align: justify;
+    }
+
+    .col-phrase {
+      position: fixed;
+      right: var(--pad);
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: right;
+    }
+
+    /* ── Nome ─────────────────────────────────────── */
+    .name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    .bio {
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .bio p + p {
+      margin-top: 1rem;
+    }
+
+    .bio {
+      font-weight: 300;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    .bio + .bio {
+      margin-top: 0.4rem;
+    }
+
+    .projects-list {
+      margin-top: 1.5rem;
+    }
+
+    /* ── Projetos ─────────────────────────────────── */
+    .col-projects {
+      align-items: flex-start;
+    }
+
+    .project {
+      display: block;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .project + .project { margin-top: 1.5rem; }
+
+    .project-name {
+      font-weight: 500;
+      font-size: 0.875rem;
+    }
+
+    .project-desc {
+      font-weight: 300;
+      color: var(--ink);
+      margin-top: 0.4rem;
+      line-height: 1.7;
+    }
+
+    .project-url {
+      font-size: 0.7rem;
+      color: var(--ink);
+      margin-top: 0.75rem;
+      letter-spacing: 0.08em;
+    }
+
+    .project[href]:not([href="#"]):hover .project-name {
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+    }
+
+    /* ── Frase ─────────────────────────────────────── */
+    .col-phrase {
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .phrase {
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 22ch;
+      line-height: 1.55;
+    }
+
+    input, textarea, button {
+      font-family: 'Jost', 'Helvetica Neue', sans-serif;
+      font-size: var(--size);
+      -webkit-appearance: none;
+    }
+
+    /* ── Botão de contato ────────────────────────── */
+    .contact-btn-wrap {
+      position: fixed;
+      bottom: 3rem;
+      left: calc(50% - 17rem);
+    }
+
+    .contact-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--ff);
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: var(--ink);
+      letter-spacing: 0.08em;
+      padding: 0;
+      transition: font-weight 0.2s ease;
+    }
+
+    .contact-btn:hover { opacity: 0.5; }
+
+    /* ── Formulário ──────────────────────────────── */
+    .col-form {
+      display: none;
+      position: relative;
+      margin: 0 auto;
+      width: 34rem;
+      text-align: left;
+    }
+
+    .form-back {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--ff);
+      font-size: var(--size);
+      font-weight: 300;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+      padding: 0;
+      margin-bottom: 2rem;
+      display: inline-block;
+      transition: font-weight 0.2s ease;
+    }
+
+    .form-back:hover { opacity: 0.5; }
+
+    .form-field { margin-bottom: 1.5rem; }
+
+    .form-label {
+      display: block;
+      font-family: var(--ff);
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: var(--ink);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--muted);
+      font-family: var(--ff);
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+      padding: 0.3rem 0 0.5rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus { border-bottom-color: var(--ink); }
+
+    .form-textarea {
+      resize: none;
+      height: 5rem;
+      line-height: 1.6;
+    }
+
+    .form-submit {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--ff);
+      font-size: var(--size);
+      font-weight: 300;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+      padding: 0;
+      margin-top: 0.75rem;
+      transition: opacity 0.2s ease;
+    }
+
+    .form-submit:hover { opacity: 0.4; }
+
+    .form-success {
+      font-family: var(--ff);
+      font-size: var(--size);
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* ── Mobile ───────────────────────────────────── */
+    @media (max-width: 680px) {
+      .col-name, .col-projects, .col-phrase {
+        position: static;
+        transform: none;
+      }
+
+      .page {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        padding: 2.5rem 2rem;
+        gap: 3rem;
+      }
+
+      .col-projects { width: 100%; }
+
+      .col-phrase { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Esquerda: nome -->
+    <div class="col-name">
+      <p class="name">Jeff Münchow</p>
+    </div>
+
+    <!-- Centro: projetos -->
+    <div class="col-projects">
+
+      <p class="bio">Jeff Münchow é um empreendedor criativo de Pelotas, Rio Grande do Sul. Nos últimos dezesseis anos, fotografou casamentos por todo o Brasil com o Münchow Studio — um trabalho construído sobre a crença de que os momentos que mais importam num casamento raramente estão no roteiro.</p>
+      <p class="bio">Em 2026, fundou a SOUP Travel Club, um clube de viagens experiencial com curadoria de destinos e gestão de milhas. A ideia nasceu das próprias viagens que fazia para fotografar casamentos pelo país e fora dele: a necessidade de se deslocar com frequência foi abrindo espaço para aprender a viajar melhor — com menos custo, mais eficiência e, com o tempo, com muito mais prazer. O que começou como solução pessoal virou serviço para quem quer o mesmo resultado sem precisar percorrer o mesmo caminho.</p>
+
+      <div class="projects-list">
+
+      <a href="https://munchow.studio" target="_blank" rel="noopener noreferrer" class="project">
+        <p class="project-name">Münchow Studio</p>
+        <p class="project-desc">Fotografia de casamento no Brasil e no exterior. Um trabalho documental — feito para casais que querem que as fotos do seu casamento ainda digam algo daqui a trinta anos.</p>
+        <p class="project-desc">Publicações em: Vogue Noiva, Harper's Bazaar, Mariée Weddings.</p>
+        <p class="project-url">– munchow.studio</p>
+      </a>
+
+      <!-- Atualize o href quando a SOUP estiver no ar -->
+      <a href="#" class="project">
+        <p class="project-name">Soup Travel Club</p>
+        <p class="project-desc">Um clube privado de gestão de viagens para quem já decide demais ao longo do dia. Milhas, reservas e decisões cuidadas de perto — sem exigir atenção de quem viaja.</p>
+        <p class="project-url"><a href="https://instagram.com/souptravelclub" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">– @souptravelclub</a></p>
+      </a>
+
+      </div>
+
+    </div>
+
+    <!-- Formulário de contato (oculto por padrão) -->
+    <!-- ⚠️ Crie uma conta gratuita em formspree.io e substitua YOUR_FORM_ID pelo ID do seu formulário -->
+    <div class="col-form" id="colForm">
+      <button class="form-back" id="formBack">← voltar</button>
+      <form id="contactForm">
+        <div class="form-field">
+          <label class="form-label" for="nome">Nome</label>
+          <input class="form-input" type="text" id="nome" name="nome" required />
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-input" type="email" id="email" name="email" required />
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="mensagem">Mensagem</label>
+          <textarea class="form-textarea" id="mensagem" name="mensagem" required></textarea>
+        </div>
+        <button class="form-submit" type="submit">Enviar</button>
+      </form>
+      <p class="form-success" id="formSuccess" style="display:none">Mensagem enviada. Em breve entro em contato.</p>
+    </div>
+
+    <!-- Direita: frase a definir -->
+    <div class="col-phrase">
+      <p class="phrase"><!-- FRASE AQUI --></p>
+    </div>
+
+    <!-- Botão de contato -->
+    <div class="contact-btn-wrap">
+      <button class="contact-btn" id="contactBtn">contato</button>
+    </div>
+
+  </div>
+
+  <script>
+    const contactBtn  = document.getElementById('contactBtn');
+    const colProjects = document.querySelector('.col-projects');
+    const colForm     = document.getElementById('colForm');
+    const formBack    = document.getElementById('formBack');
+    const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+
+    function showForm() {
+      colProjects.style.display = 'none';
+      colForm.style.display = 'block';
+    }
+
+    function showContent() {
+      colForm.style.display = 'none';
+      colProjects.style.display = 'block';
+      contactForm.reset();
+      contactForm.style.display = 'block';
+      formSuccess.style.display = 'none';
+    }
+
+    contactBtn.addEventListener('click', showForm);
+    formBack.addEventListener('click', showContent);
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(contactForm);
+      try {
+        // ⚠️ Substitua YOUR_FORM_ID pelo ID do seu formulário no formspree.io
+        const res = await fetch('https://formspree.io/f/contato@jeffmunchow.com', {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          contactForm.style.display = 'none';
+          formSuccess.style.display = 'block';
+        } else {
+          alert('Erro ao enviar. Tente novamente.');
+        }
+      } catch {
+        alert('Erro ao enviar. Tente novamente.');
+      }
+    });
+  </script>
+
+</body>
+</html>
