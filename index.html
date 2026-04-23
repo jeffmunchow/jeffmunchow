@@ -219,13 +219,42 @@
       letter-spacing: 0.02em;
       padding: 0;
       margin-bottom: 2rem;
-      display: inline-block;
-      transition: font-weight 0.2s ease;
+      display: block;
+      transition: opacity 0.2s ease;
     }
 
     .form-back:hover { opacity: 0.5; }
 
     .form-field { margin-bottom: 1.5rem; }
+
+    .form-label-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-error {
+      font-family: var(--ff);
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: var(--ink);
+      letter-spacing: 0.08em;
+      display: none;
+    }
+
+    .form-field.has-error .form-label {
+      font-weight: 500;
+    }
+
+    .form-field.has-error .form-error {
+      display: inline;
+    }
+
+    .form-field.has-error .form-input,
+    .form-field.has-error .form-textarea {
+      border-bottom-color: var(--ink);
+    }
 
     .form-label {
       display: block;
@@ -299,7 +328,7 @@
       font-weight: 300;
       color: var(--ink);
       letter-spacing: 0.02em;
-      margin-bottom: 0.15rem;
+      margin-bottom: 0.05rem;
     }
 
     .form-success-sub {
@@ -372,18 +401,34 @@
     <div class="col-form" id="colForm">
       <button class="form-back" id="formBack">← voltar</button>
       <div class="col-form-body">
-        <form id="contactForm">
+        <form id="contactForm" novalidate>
           <div class="form-field">
-            <label class="form-label" for="nome">Nome</label>
-            <input class="form-input" type="text" id="nome" name="nome" required />
+            <div class="form-label-row">
+              <label class="form-label" for="nome">Nome</label>
+              <span class="form-error" id="erro-nome">– Preenchimento obrigatório</span>
+            </div>
+            <input class="form-input" type="text" id="nome" name="nome" />
           </div>
           <div class="form-field">
-            <label class="form-label" for="email">Email</label>
-            <input class="form-input" type="email" id="email" name="email" required />
+            <div class="form-label-row">
+              <label class="form-label" for="email">Email</label>
+              <span class="form-error" id="erro-email">– Preenchimento obrigatório</span>
+            </div>
+            <input class="form-input" type="email" id="email" name="email" />
           </div>
           <div class="form-field">
-            <label class="form-label" for="mensagem">Mensagem</label>
-            <textarea class="form-textarea" id="mensagem" name="mensagem" required></textarea>
+            <div class="form-label-row">
+              <label class="form-label" for="telefone">Telefone / Whatsapp</label>
+              <span class="form-error" id="erro-telefone">– Preenchimento obrigatório</span>
+            </div>
+            <input class="form-input" type="tel" id="telefone" name="telefone" />
+          </div>
+          <div class="form-field">
+            <div class="form-label-row">
+              <label class="form-label" for="mensagem">Mensagem</label>
+              <span class="form-error" id="erro-mensagem">– Preenchimento obrigatório</span>
+            </div>
+            <textarea class="form-textarea" id="mensagem" name="mensagem"></textarea>
           </div>
           <button class="form-submit" type="submit">Enviar</button>
         </form>
@@ -424,6 +469,7 @@
       colForm.style.display = 'none';
       colProjects.style.display = 'block';
       contactForm.reset();
+      contactForm.querySelectorAll('.form-field').forEach(f => f.classList.remove('has-error'));
       contactForm.style.display = 'block';
       formSuccess.style.display = 'none';
       contactBtn.style.display = 'block';
@@ -434,6 +480,29 @@
 
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      // Validação customizada
+      const fields = [
+        { id: 'nome',     erroId: 'erro-nome'     },
+        { id: 'email',    erroId: 'erro-email'    },
+        { id: 'telefone', erroId: 'erro-telefone' },
+        { id: 'mensagem', erroId: 'erro-mensagem' },
+      ];
+
+      let valido = true;
+      fields.forEach(f => {
+        const input = document.getElementById(f.id);
+        const field = input.closest('.form-field');
+        if (!input.value.trim()) {
+          field.classList.add('has-error');
+          valido = false;
+        } else {
+          field.classList.remove('has-error');
+        }
+      });
+
+      if (!valido) return;
+
       const data = new FormData(contactForm);
       try {
         // ⚠️ Substitua YOUR_FORM_ID pelo ID do seu formulário no formspree.io
