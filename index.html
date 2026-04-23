@@ -244,12 +244,15 @@
       transition: border-color 0.2s ease;
     }
 
-    .form-input:focus,
-    .form-textarea:focus {
-      border-bottom-color: var(--ink);
-      background: transparent;
-      box-shadow: none;
-      outline: none;
+    .form-input:-webkit-autofill,
+    .form-input:-webkit-autofill:hover,
+    .form-input:-webkit-autofill:focus,
+    .form-textarea:-webkit-autofill,
+    .form-textarea:-webkit-autofill:hover,
+    .form-textarea:-webkit-autofill:focus {
+      -webkit-box-shadow: 0 0 0px 1000px #faf8f3 inset;
+      -webkit-text-fill-color: var(--ink);
+      transition: background-color 5000s ease-in-out 0s;
     }
 
     .form-textarea {
